@@ -1,8 +1,9 @@
 package game
 {
 	import flash.display.MovieClip;
+	import com.monday8am.greenfoot.World;
 	
-	public class Cannon extends MovieClip
+	public class Cannon extends SmoothActor
 	{
 		
 		private var waitingForBall : Boolean = false;
@@ -32,7 +33,7 @@ package game
 		{
 			// Get a random ball type from the list of allowed ones. Only balls currently in the map
 			// will be in the list.
-			var allowedBallTypes : Array = ((BubbleWorld)getWorld()).getMap().getAllowedBallTypes();
+			var allowedBallTypes : Array = BubbleWorld( getWorld() ).getMap().getAllowedBallTypes();
 			
 			if (allowedBallTypes.length > 0) 
 			{
@@ -72,6 +73,7 @@ package game
 			}
 		}	
 		
+		
 		private function handleKeys( deltaTime : Number ) : void
 		{   
 			// Player presses the UP arrow: fire a ball if we're ready.
@@ -91,14 +93,14 @@ package game
 			if( Greenfoot.isKeyDown( "left" ) )
 			{
 				angle = Math.max( -MAX_ANGLE, angle - ANGULAR_SPEED * deltaTime);
-				setRotation( (int)angle );
+				setRotation( int(angle) );
 			}
 			
 			// Player presses the RIGHT arrow: turn the cannon right.
 			if( Greenfoot.isKeyDown("right") )
 			{
 				angle = Math.min(MAX_ANGLE, angle + ANGULAR_SPEED * deltaTime);
-				setRotation( (int)angle );
+				setRotation( int(angle) );
 			}
 		}    
 		

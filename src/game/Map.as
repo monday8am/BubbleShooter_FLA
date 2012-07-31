@@ -3,6 +3,7 @@ package game
 	
 	import game.Cell;
 	import game.Position;
+	import com.monday8am.greenfoot.World;
 	
 	public class Map
 	{

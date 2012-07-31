@@ -1,6 +1,7 @@
 package game
 {
 	import flash.display.MovieClip;
+	import com.monday8am.greenfoot.World;
 	
 	public class BubbleWorld extends World
 	{
@@ -116,14 +117,14 @@ package game
 			{
 				if ( numberOfObjects() < 4) 
 				{
-					removeObject(sb);
+					removeObject( sb );
 					flag = true;
 					
 					level++;
 					
 					if ( level < levelNum) 
 					{
-						map = new Map(this, maps[level]);
+						map = new Map( this, maps[level] );
 						map.updateAllowedBallTypes();
 						cannon.prepareBall();
 					} 

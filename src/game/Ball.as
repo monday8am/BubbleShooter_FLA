@@ -1,6 +1,7 @@
 package game
 {
 	import flash.utils.Dictionary;
+	import com.monday8am.greenfoot.World;
 
 	public class Ball extends SmoothActor
 	{
@@ -79,7 +80,7 @@ package game
 			velocityY = 0;
 			
 			// Ask the map for a free cell near our position.
-			var map : Map = (( BubbleWorld )getWorld() ).getMap();
+			var map : Map = (( BubbleWorld )getWorld() ).map;
 			var pos : Position = map.findFreeCell((int)exactX, (int)exactY);
 			
 			// Set the adjusted x, y.
@@ -121,7 +122,7 @@ package game
 				// Play sound when the ball bounces off a wall.
 				Greenfoot.playSound("bounce.wav");
 			}
-			else if(exactX >= right)
+			else if( exactX >= right )
 			{
 				exactX -= velocityX*2;
 				velocityX = -velocityX;
@@ -130,13 +131,13 @@ package game
 				Greenfoot.playSound("bounce.wav");
 			}
 			
-			if(exactY < 16)
+			if( exactY < 16)
 			{
 				stick();
 			}
 			else
 			{
-				List<Ball> others = getIntersectingObjects( Ball.class );
+				var others : Array = getIntersectingObjects( Ball );
 				// create dictionary
 					
 				var collisionDistance : Number = Math.pow(32 * 0.82, 2);
@@ -172,7 +173,7 @@ package game
 				
 				exactX += velocityX * deltaTime;
 				exactY += velocityY * deltaTime;
-				setLocation((int)exactX, (int)exactY);
+				setLocation( (int)exactX, (int)exactY);
 			}
 			
 			else if(state == STATE_FALLING)
@@ -183,7 +184,7 @@ package game
 				exactY += velocityY * deltaTime;
 				setLocation((int)exactX, (int)exactY);   
 				
-				if(exactY >= getWorld().getHeight()+ getImage().getHeight()/2)
+				if( exactY >= getWorld().getHeight() + getImage().getHeight()/2 )
 				{
 					getWorld().removeObject(this);
 				}

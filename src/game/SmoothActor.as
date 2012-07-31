@@ -1,8 +1,9 @@
 package game
 {
 	import flash.display.MovieClip;
+	import com.monday8am.greenfoot.Actor;
 	
-	public class SmoothActor extends MovieClip
+	public class SmoothActor extends Actor
 	{
 		
 		private   var oldTime : uint;

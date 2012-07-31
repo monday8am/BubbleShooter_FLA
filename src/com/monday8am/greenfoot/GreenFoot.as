@@ -16,13 +16,22 @@ package game
 			
 		}
 		
+		
 		public static function isKeyDown( keyName : String ) : Boolean
 		{
 			// TODO Auto Generated method stub
 			return false;
 		}
 		
+		
 		public static function setSpeed( speed : int ):void
+		{
+			// TODO Auto Generated method stub
+			
+		}
+		
+		
+		public static function stop():void
 		{
 			// TODO Auto Generated method stub
 			
