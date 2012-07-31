@@ -8,5 +8,6 @@ package game
 		public var i : int;
 		
 		public var j : int;
+		
 	}
 }

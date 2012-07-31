@@ -1,28 +1,33 @@
 package game
 {
-	import flash.display.MovieClip;
+	
 	import com.monday8am.greenfoot.Actor;
+	
+	import flash.display.MovieClip;
+	
 	
 	public class SmoothActor extends Actor
 	{
 		
-		private   var oldTime : uint;
+		private   var oldTime : uint  = 0;
 		protected var ticks   : uint  = 0;		
+		
 		
 		public function SmoothActor()
 		{
 			super();
 		}
 		
+		
 		public function act() : void 
 		{
-			var newTime : uint = System.nanoTime();
+			var newTime : uint = new Date().time();
 			
 			// We'll handle time in units of 1/100 seconds.
-			var deltaTime : Number = (newTime-oldTime) / 10000000.0;
+			var deltaTime : Number = (newTime - oldTime) / 10000000.0;
 			
 			// If this is the first tick, assume some reasonable amount of time elapsed. (1/100 s)
-			if(ticks == 0)
+			if( ticks == 0)
 			{
 				deltaTime = 1;
 			}

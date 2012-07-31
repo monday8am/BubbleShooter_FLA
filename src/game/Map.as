@@ -1,9 +1,10 @@
 package game
 {
 	
+	import com.monday8am.greenfoot.World;
+	
 	import game.Cell;
 	import game.Position;
-	import com.monday8am.greenfoot.World;
 	
 	public class Map
 	{
@@ -225,6 +226,7 @@ package game
 		// Note: This is complicated but avoids O(n*m) search.
 		public function updateAllowedBallTypes():void
 		{
+			
 			var allowedCount : int = 0;
 			var allowed : Array = new Array();
 			
@@ -241,17 +243,19 @@ package game
 				}
 			}
 			
-			/*
-			allowedBallTypes = new int[allowedCount];
+			
+			var allowedBallTypes = new Array();
 			var writeIndex : int = 0;
-			for(int type = 0; type < Ball.typeCount; ++type)
+			
+			for (var type:int = 0; type < Ball.typeCount; type++) 
 			{
 				if( allowed[type] )
 				{
 					allowedBallTypes[writeIndex++] = type;
-				}
-			}		
-			*/
+				}				
+			}
+			
+			
 		}
 
 		
@@ -338,7 +342,7 @@ package game
 		{
 			// Linear search through the map, just return the closest map entry position.
 			// This could be more efficient.
-			var minDistance : Number = Double.MAX_VALUE;
+			var minDistance : Number = 1000000;
 			var pos : Position = null;
 			
 			for( var j : int = 0; j < getCellCountY(); ++j)

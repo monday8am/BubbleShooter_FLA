@@ -4,9 +4,11 @@ package game
 	
 	public class ScoreBoard extends MovieClip
 	{
+		
 		public function ScoreBoard()
 		{
 			super();
 		}
+		
 	}
 }
