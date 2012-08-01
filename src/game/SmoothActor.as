@@ -11,6 +11,8 @@ package game
 		
 		private   var oldTime : uint  = 0;
 		protected var ticks   : uint  = 0;		
+
+		protected var deltaTime : Number;
 		
 		
 		public function SmoothActor()
@@ -19,12 +21,12 @@ package game
 		}
 		
 		
-		public function act() : void 
+		override public function act() : void 
 		{
 			var newTime : uint = new Date().time();
 			
 			// We'll handle time in units of 1/100 seconds.
-			var deltaTime : Number = (newTime - oldTime) / 10000000.0;
+			deltaTime = (newTime - oldTime) / 10000000.0;
 			
 			// If this is the first tick, assume some reasonable amount of time elapsed. (1/100 s)
 			if( ticks == 0)
@@ -43,17 +45,12 @@ package game
 			oldTime = newTime;
 			
 			// Call the subclass.
-			act(deltaTime);
+			//act( deltaTime );
 			
 			// Increment tick count.
 			ticks++;
 		}    
-		
-		// Subclasses should now override this method instead.
-		public function act( deltaTime : Number ) : void
-		{
-			
-		}		
+	
 	}
 }
 

@@ -6,11 +6,30 @@ package com.monday8am.greenfoot
 	public class World extends MovieClip
 	{
 		
+		
 		private var _actorList : Array = new Array();
 		
-		public function World()
+		private var _worldWidth  : int;
+		
+		private var _worldHeight : int;
+		
+		private var _cellSize    : int;
+		
+		private var _bounded     : Boolean;
+		
+		
+		
+		public function World( worldWidth : int, worldHeight : int, cellSize : int, bounded : Boolean )
 		{
 			super();
+			
+			_worldWidth = worldWidth;
+			
+			_worldHeight = worldHeight;
+			
+			_cellSize = cellSize;
+			
+			_bounded = bounded;
 		}
 		
 		
@@ -22,7 +41,7 @@ package com.monday8am.greenfoot
 		
 		
 		public function getObjects() : Array
-		{
+		{	
 			return _actorList;
 		}
 		
@@ -49,5 +68,7 @@ package com.monday8am.greenfoot
 		{
 			return this.height;	
 		}
+		
+		
 	}
 }

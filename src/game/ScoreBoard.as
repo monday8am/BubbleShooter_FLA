@@ -1,11 +1,12 @@
 package game
 {
+
 	import flash.display.MovieClip;
 	
-	public class ScoreBoard extends MovieClip
+	public class ScoreBoard extends SmoothActor
 	{
 		
-		public function ScoreBoard()
+		public function ScoreBoard( msg : String )
 		{
 			super();
 		}

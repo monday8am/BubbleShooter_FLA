@@ -76,7 +76,7 @@ package game
 		
 		
 		// Return the x screen position for the given hex coordinates.
-		public function getX( i : int, j : int ) : void
+		public function getX( i : int, j : int ) : int
 		{
 			var odd : Boolean = (j & 1) == 1;
 			return 16 + i * COLUMN_WIDTH + (odd ? 16 : 0);
@@ -84,7 +84,7 @@ package game
 		
 		
 		// Return the y screen position for the given hex coordinates.
-		public function getY( i : int, j : int) : void
+		public function getY( i : int, j : int) : int
 		{
 			return 16 + j * ROW_HEIGHT;
 		}
@@ -130,12 +130,13 @@ package game
 			
 			// Loop over how many balls or spaces are expected.
 			var ci : int = 0;
+			
 			for( var j : int = 0; j < getCellCountY(); ++j)
 			{
 				for( var i : int = 0; i < getCellCountX(j); ++i)
 				{
 					// Stop if the map text ends.
-					if(ci >= map.length())
+					if( ci >= map.length )
 					{
 						return;
 					}
@@ -171,8 +172,11 @@ package game
 			// If we got >= 3 matches, clear them!
 			if( matches.size() >= 3)
 			{
-				for( var c : Cell in matches )
+				var c : Cell;
+				
+				for (var k:int = 0; k < matches.length; k++) 
 				{
+					c = matches[k];
 					world.addObject( new StickEffect(), c.ball.x, c.ball.y );
 					c.ball.fall();
 					c.ball = null;
@@ -231,8 +235,12 @@ package game
 			var allowed : Array = new Array();
 			
 			// Only ball types that exist in the map RIGHT NOW as attached balls will be allowed.
-			for( var c : Cell in cells )
+			var c : Cell;
+			
+			for ( var i:int = 0; i < allowed.length; i++)
 			{
+				c = allowed[i];
+				
 				if( c != null && c.ball != null && c.attached )
 				{
 					var type : int = c.ball.type;
@@ -261,18 +269,22 @@ package game
 		
 		private function updateBalls() : void
 		{
+			var i : int = 0;
 			// Mark all balls as unattached.
-			for( var c : Cell in cells )
+			var c : Cell;
+			
+			for ( i = 0; i < cells.length; i++)
 			{
+				c = cells[i];
 				c.attached = false;
 			}
 			
 			// Find the balls attached to the top edge of the map, and scan ALL their neighbors recursively.
 			// This will cause a flood fill of the "attached" flag. Any balls NOT reached by this fill
 			// should be cleared away.
-			for( var i : int = 0; i < getCellCountX(0); ++i)
+			for( i = 0; i < getCellCountX(0); ++i)
 			{
-				var c : Cell = cells[i];
+				c = cells[i];
 				
 				if( c.ball != null)
 				{
@@ -284,8 +296,10 @@ package game
 			// ALSO set the 'won' attribute if the game was won (== no attached balls on the map).
 			won = true;
 			
-			for( var c : Cell in cells)
+			for ( i = 0; i < cells.length; i++)
 			{
+				c = cells[i];
+				
 				if( c != null && c.ball != null)
 				{
 					if(c.attached)

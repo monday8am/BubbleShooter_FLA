@@ -1,7 +1,8 @@
 package game
 {
-	import flash.utils.Dictionary;
 	import com.monday8am.greenfoot.World;
+	
+	import flash.utils.Dictionary;
 
 	public class Ball extends SmoothActor
 	{
@@ -50,9 +51,9 @@ package game
 		{
 			return _type;
 		}
-
 		
-		protected  function addedToWorld( world : World ) : void
+		
+		override protected  function addedToWorld( world : World ) : void
 		{
 			// Store the initial position.
 			exactX = this.x;
@@ -80,8 +81,8 @@ package game
 			velocityY = 0;
 			
 			// Ask the map for a free cell near our position.
-			var map : Map = (( BubbleWorld )getWorld() ).map;
-			var pos : Position = map.findFreeCell((int)exactX, (int)exactY);
+			var map : Map =  BubbleWorld( getWorld() ).getMap();
+			var pos : Position = map.findFreeCell( int(exactX), int(exactY) );
 			
 			// Set the adjusted x, y.
 			exactX = map.getX(pos.i, pos.j);
@@ -91,7 +92,7 @@ package game
 			map.setBall(pos.i, pos.j, this );
 			
 			// Spawn an effect.
-			getWorld().addObject( new StickEffect(), (int)exactX, (int)exactY );
+			getWorld().addObject( new StickEffect(), int( exactX), int( exactY));
 			
 			// Play sound when the ball sticks to something.
 			Greenfoot.playSound("stick.wav");
@@ -137,19 +138,21 @@ package game
 			}
 			else
 			{
-				var others : Array = getIntersectingObjects( Ball );
+				var others : Array = getIntersectingObjects( "Ball" );
 				// create dictionary
 					
 				var collisionDistance : Number = Math.pow(32 * 0.82, 2);
 				var tooClose : Boolean = false;
-					
-				for( var b Ball in others )
+				
+				
+				for (var i:int = 0; i < others.length; i++) 
 				{
+					var b  : Ball = others[i]; 
 					var dx : Number = b.x - this.x;
 					var dy : Number = b.y - this.y;
 					var d2 : Number = dx*dx + dy*dy;
 						
-					if( b.getState() == Ball.STATE_STUCK &&
+					if( b.state == Ball.STATE_STUCK &&
 						d2 <= collisionDistance)
 					{
 							tooClose = true;
@@ -165,7 +168,7 @@ package game
 		}	
 				
 				
-		public function act( deltaTime : Number ) : void
+		override public function act( deltaTime : Number ) : void
 		{
 			if( state == STATE_MOVING )
 			{
@@ -173,7 +176,7 @@ package game
 				
 				exactX += velocityX * deltaTime;
 				exactY += velocityY * deltaTime;
-				setLocation( (int)exactX, (int)exactY);
+				setLocation( int( exactX), int( exactY));
 			}
 			
 			else if(state == STATE_FALLING)
@@ -182,9 +185,10 @@ package game
 				velocityY += FALL_GRAVITY * deltaTime;
 				exactX += velocityX * deltaTime;
 				exactY += velocityY * deltaTime;
-				setLocation((int)exactX, (int)exactY);   
+				setLocation( int( exactX), int( exactY));   
 				
-				if( exactY >= getWorld().getHeight() + getImage().getHeight()/2 )
+				//if( exactY >= getWorld().getHeight() + getImage().getHeight()/2 )
+				if( exactY >= getWorld().getHeight() + getHeight()/2 )
 				{
 					getWorld().removeObject(this);
 				}

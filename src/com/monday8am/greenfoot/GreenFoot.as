@@ -1,8 +1,30 @@
-package game
+package com.monday8am.greenfoot
 {
+	
 	public class Greenfoot
 	{
+		
+		// greenfot instance variables
+		
+		private var _speed : int = 0;
+		
 
+		// singleton...
+		
+		private static var _instance : Greenfoot;		
+		
+		
+		// singleton 
+		
+		public static function get instance() : Greenfoot 
+		{
+			if ( _instance == null) 
+			{
+				_instance = new Greenfoot( new SingletonEnforcer() );
+			} 
+			return _instance;
+		}	
+		
 		
 		public static function getRandomNumber( len : int ) : int
 		{
@@ -26,8 +48,7 @@ package game
 		
 		public static function setSpeed( speed : int ):void
 		{
-			// TODO Auto Generated method stub
-			
+			instance._speed = speed;
 		}
 		
 		
@@ -38,3 +59,5 @@ package game
 		}
 	}
 }
+
+internal class SingletonEnforcer { }

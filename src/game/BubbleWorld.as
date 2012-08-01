@@ -1,7 +1,10 @@
 package game
 {
-	import flash.display.MovieClip;
+
 	import com.monday8am.greenfoot.World;
+	
+	import flash.display.MovieClip;
+	
 	
 	public class BubbleWorld extends World
 	{
@@ -77,8 +80,6 @@ package game
 		
 		public function BubbleWorld()
 		{
-			super();
-
 			super( Map.MAX_WIDTH * Map.COLUMN_WIDTH, Map.MAX_HEIGHT * Map.ROW_HEIGHT, 1, false ); 
 			
 			// Max speed. We use time-based animation so this is purely for smoothness,

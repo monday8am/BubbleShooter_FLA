@@ -1,7 +1,9 @@
 package game
 {
-	import flash.display.MovieClip;
+	
 	import com.monday8am.greenfoot.World;
+	
+	import flash.display.MovieClip;
 	
 	public class Cannon extends SmoothActor
 	{
@@ -22,7 +24,7 @@ package game
 		}
 		
 		
-		protected function addedToWorld( world : World ) : void
+		override protected function addedToWorld( world : World ) : void
 		{
 			// We're in the world, so prepare the first ball.
 			prepareBall();
@@ -57,7 +59,7 @@ package game
 		}
 
 		
-		public function act( deltaTime : Number ) : void
+		override public function act( deltaTime : Number ) : void
 		{
 			// Handle key presses.
 			handleKeys( deltaTime );

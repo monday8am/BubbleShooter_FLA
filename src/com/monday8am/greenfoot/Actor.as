@@ -60,7 +60,7 @@ package com.monday8am.greenfoot
 		}
 		
 		
-		public function getImage() : void
+		public function getImage() : MovieClip
 		{	
 			return this;
 		}
@@ -93,6 +93,12 @@ package com.monday8am.greenfoot
 			// set location
 			this.x = x;
 			this.y = y;
+		}
+		
+		
+		public function act():void
+		{
+			
 		}
 		
 
