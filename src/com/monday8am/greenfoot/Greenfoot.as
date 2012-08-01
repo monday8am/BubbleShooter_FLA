@@ -23,7 +23,15 @@ package com.monday8am.greenfoot
 				_instance = new Greenfoot( new SingletonEnforcer() );
 			} 
 			return _instance;
-		}	
+		}
+		
+		/*
+		* Model constructor.
+		*/
+		public function Greenfoot( pvt:SingletonEnforcer ) 
+		{
+			super();
+		}		
 		
 		
 		public static function getRandomNumber( len : int ) : int

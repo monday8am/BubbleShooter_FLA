@@ -233,6 +233,7 @@ package game
 			
 			var allowedCount : int = 0;
 			var allowed : Array = new Array();
+			var type : int;
 			
 			// Only ball types that exist in the map RIGHT NOW as attached balls will be allowed.
 			var c : Cell;
@@ -243,7 +244,8 @@ package game
 				
 				if( c != null && c.ball != null && c.attached )
 				{
-					var type : int = c.ball.type;
+					
+					type = c.ball.type;
 					
 					if( !allowed[type] ) allowedCount++;
 					
@@ -252,10 +254,10 @@ package game
 			}
 			
 			
-			var allowedBallTypes = new Array();
+			var allowedBallTypes : Array = new Array();
 			var writeIndex : int = 0;
 			
-			for (var type:int = 0; type < Ball.typeCount; type++) 
+			for ( type = 0; type < Ball.typeCount; type++) 
 			{
 				if( allowed[type] )
 				{

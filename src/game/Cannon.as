@@ -1,6 +1,7 @@
 package game
 {
 	
+	import com.monday8am.greenfoot.Greenfoot;
 	import com.monday8am.greenfoot.World;
 	
 	import flash.display.MovieClip;
@@ -59,7 +60,7 @@ package game
 		}
 
 		
-		override public function act( deltaTime : Number ) : void
+		override public function doIt( deltaTime : Number ) : void
 		{
 			// Handle key presses.
 			handleKeys( deltaTime );

@@ -1,6 +1,7 @@
 package game
 {
 
+	import com.monday8am.greenfoot.Greenfoot;
 	import com.monday8am.greenfoot.World;
 	
 	import flash.display.MovieClip;
