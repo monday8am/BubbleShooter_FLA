@@ -9,6 +9,7 @@ package com.monday8am.greenfoot
 	{
 		
 		private var _world : World;
+		private var _image : DisplayObject;
 		
 		
 		public function Actor()
@@ -63,6 +64,13 @@ package com.monday8am.greenfoot
 		public function getImage() : MovieClip
 		{	
 			return this;
+		}
+		
+		
+		public function setImage( image : DisplayObject ) : void
+		{
+			_image = image;
+			this.addChild( _image );
 		}
 		
 		
