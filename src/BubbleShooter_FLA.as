@@ -29,6 +29,8 @@ package
 			
 			bubble = new BubbleWorld();
 			
+			addChild( bubble );
+			
 			
 		}
 	}

@@ -6,7 +6,6 @@ package com.monday8am.greenfoot
 	public class World extends MovieClip
 	{
 		
-		
 		private var _actorList : Array = new Array();
 		
 		private var _worldWidth  : int;
@@ -35,7 +34,14 @@ package com.monday8am.greenfoot
 		
 		public function addObject( actor : SmoothActor, xPos : int, yPos : int ):void
 		{
-			// add actor to world
+			
+			_actorList.push( actor );
+			
+			addChild( actor );
+			
+			actor.x = xPos;
+			
+			actor.y = yPos;
 			
 		}
 		
@@ -54,7 +60,10 @@ package com.monday8am.greenfoot
 		
 		public function removeObject( actor : Actor ) : void
 		{
-			// remove actor
+			_actorList.splice( _actorList.indexOf( actor), 1 );
+			
+			removeChild( actor );
+
 		}
 		
 		
