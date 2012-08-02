@@ -38,7 +38,7 @@ package game
 			// will be in the list.
 			var allowedBallTypes : Array = BubbleWorld( getWorld() ).getMap().getAllowedBallTypes();
 			
-			if (allowedBallTypes.length > 0) 
+			if ( allowedBallTypes.length > 0) 
 			{
 				var type : int = allowedBallTypes[ Greenfoot.getRandomNumber( allowedBallTypes.length ) ];
 				
