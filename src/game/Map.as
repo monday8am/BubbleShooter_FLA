@@ -26,7 +26,7 @@ package game
 			world = w;
 			
 			// Initialize the array.
-			for( var i : int = 0; i < cells.length; ++i)
+			for( var i : int = 0; i < MAX_WIDTH * MAX_HEIGHT; i++ )
 			{
 				cells[i] = new Cell( null, true);
 			}
@@ -264,8 +264,6 @@ package game
 					allowedBallTypes[writeIndex++] = type;
 				}				
 			}
-			
-			
 		}
 
 		
