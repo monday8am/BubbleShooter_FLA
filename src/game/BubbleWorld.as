@@ -96,7 +96,7 @@ package game
 			map.updateAllowedBallTypes();
 			
 			
-			// Create the cannon.
+			// Create the cannon.	
 			cannon = new Cannon();
 			addObject( cannon, getWidth()/2, getHeight());
 			

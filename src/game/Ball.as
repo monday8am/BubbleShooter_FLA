@@ -3,6 +3,7 @@ package game
 	import com.monday8am.greenfoot.Greenfoot;
 	import com.monday8am.greenfoot.World;
 	
+	import flash.display.MovieClip;
 	import flash.utils.Dictionary;
 
 	public class Ball extends SmoothActor
@@ -37,7 +38,12 @@ package game
 			_type = color;
 			
 			// Set the correct image based on the type (color).
-			// setImage(images[type]);	
+			
+			var ball_mc : MovieClip = new ball_mc();
+			ball_mc.gotoAndStop( type);
+			
+			setImage( ball_mc );	
+			
 			// set correct frame using id
 		}
 		
