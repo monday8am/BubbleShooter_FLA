@@ -126,7 +126,7 @@ package game
 			var lookups : String = "0123456789 "; 
 			
 			// Clear out spaces.
-			map = map.replace( " ", "" );
+			map = map.split( " " ).join( "" );
 			
 			// Loop over how many balls or spaces are expected.
 			var ci : int = 0;
@@ -142,7 +142,7 @@ package game
 					}
 					
 					// Translate the character in the map string to a ball type.
-					var type : int = lookups.indexOf(map.charAt(ci++));
+					var type : int = lookups.indexOf( map.charAt(ci++) );
 					
 					// If it's a valid type, spawn a ball.
 					if(type >= 0 && type < Ball.typeCount)
@@ -150,6 +150,8 @@ package game
 						// Add the ball to the world.
 						var ball : Ball = new Ball(type);
 						world.addObject( ball, getX(i,j), getY(i,j));
+						
+						trace( "balls ready: " , ball, type,  i, j );
 						
 						// And to the map. (Don't use setBall(i,j,ball) as this will cause matches!)
 						getCell(i,j).ball = ball;
@@ -231,38 +233,30 @@ package game
 		public function updateAllowedBallTypes():void
 		{
 			
-			var allowedCount : int = 0;
-			var allowed : Array = new Array();
-			var type : int;
-			
 			// Only ball types that exist in the map RIGHT NOW as attached balls will be allowed.
 			var c : Cell;
+			var type : int;
+			var writeIndex : int = 0;
+
+			// clean allowedBalls
 			
-			for ( var i:int = 0; i < allowed.length; i++)
+			allowedBallTypes.splice( 0 );
+			
+			for ( var i:int = 0; i < cells.length; i++)
 			{
-				c = allowed[i];
+				c = cells[i];
 				
 				if( c != null && c.ball != null && c.attached )
 				{
 					
 					type = c.ball.type;
 					
-					if( !allowed[type] ) allowedCount++;
-					
-					allowed[type] = true;
+					if( allowedBallTypes.indexOf( type ) == -1 )
+					{
+						allowedBallTypes[ writeIndex ] = type;
+						writeIndex++;
+					}
 				}
-			}
-			
-			
-			var allowedBallTypes : Array = new Array();
-			var writeIndex : int = 0;
-			
-			for ( type = 0; type < Ball.typeCount; type++) 
-			{
-				if( allowed[type] )
-				{
-					allowedBallTypes[writeIndex++] = type;
-				}				
 			}
 		}
 

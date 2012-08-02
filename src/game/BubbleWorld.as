@@ -89,7 +89,7 @@ package game
 			Greenfoot.setSpeed(100);
 			
 			// Load the map.
-			map = new Map( this, maps[0] );
+			map = new Map( this, maps[3] );
 			
 			// Update the allowed ball types. (i.e. we don't want to spawn a
 			// certain color of balls if the map doesn't contain them!)
