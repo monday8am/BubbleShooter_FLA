@@ -83,6 +83,9 @@ package game
 		{
 			super( Map.MAX_WIDTH * Map.COLUMN_WIDTH, Map.MAX_HEIGHT * Map.ROW_HEIGHT, 1, false ); 
 			
+			
+			Greenfoot.setWorld( this );
+			
 			// Max speed. We use time-based animation so this is purely for smoothness,
 			// because Greenfoot is plain stupid. I can't find a way to get 60 Hz so this is
 			// what we have to do. Note: Exporting the game seems to cap this to some value < 100. :(
@@ -94,7 +97,6 @@ package game
 			// Update the allowed ball types. (i.e. we don't want to spawn a
 			// certain color of balls if the map doesn't contain them!)
 			map.updateAllowedBallTypes();
-			
 			
 			// Create the cannon.	
 			cannon = new Cannon();
@@ -109,13 +111,13 @@ package game
 		}
 		
 		
-		public function act() : void
+		override public function act() : void
 		{
 			// Update map stuff.
 			map.update();
 			
 			// Do something if the player cleared the map.
-			if (map.hasWon()) 
+			if ( map.hasWon() ) 
 			{
 				if ( numberOfObjects() < 4) 
 				{

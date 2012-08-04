@@ -150,9 +150,7 @@ package game
 						// Add the ball to the world.
 						var ball : Ball = new Ball(type);
 						world.addObject( ball, getX(i,j), getY(i,j));
-						
-						trace( "balls ready: " , ball, type,  i, j );
-						
+
 						// And to the map. (Don't use setBall(i,j,ball) as this will cause matches!)
 						getCell(i,j).ball = ball;
 					}

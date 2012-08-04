@@ -16,6 +16,8 @@ package com.monday8am.greenfoot
 		
 		private var _bounded     : Boolean;
 		
+		private var _speed 		 : int; 
+		
 		
 		
 		public function World( worldWidth : int, worldHeight : int, cellSize : int, bounded : Boolean )
@@ -29,6 +31,7 @@ package com.monday8am.greenfoot
 			_cellSize = cellSize;
 			
 			_bounded = bounded;
+			
 		}
 		
 		
@@ -69,13 +72,19 @@ package com.monday8am.greenfoot
 		
 		public function getWidth():int
 		{
-			return this.width;	
+			return _worldWidth;	
 		}
 		
 		
 		public function getHeight():int
 		{
-			return this.height;	
+			return _worldHeight;	
+		}
+		
+		
+		public function act():void
+		{
+			
 		}
 		
 		

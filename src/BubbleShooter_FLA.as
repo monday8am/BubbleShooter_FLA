@@ -1,8 +1,11 @@
 package
 {
+	import com.monday8am.greenfoot.Greenfoot;
+	
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
+	import flash.events.KeyboardEvent;
 	import flash.system.Capabilities;
 	
 	import game.BubbleWorld;
@@ -27,11 +30,15 @@ package
 
 			}				
 			
-			bubble = new BubbleWorld();
 			
+			Greenfoot.instance.init( this );
+			
+			bubble = new BubbleWorld();
+
 			addChild( bubble );
 			
-			
 		}
+			
+		
 	}
 }

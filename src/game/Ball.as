@@ -40,11 +40,13 @@ package game
 			// Set the correct image based on the type (color).
 			
 			var ball : MovieClip = new ball_mc();
+			
+			// set correct frame using id
+			
 			ball.gotoAndStop( type);
 			
 			setImage( ball );	
 			
-			// set correct frame using id
 		}
 		
 		

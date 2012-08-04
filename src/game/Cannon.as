@@ -22,6 +22,11 @@ package game
 		public function Cannon()
 		{
 			super();
+			
+			// Set image
+			
+			var cannon : MovieClip = new cannon_mc();
+			setImage( cannon );				
 		}
 		
 		

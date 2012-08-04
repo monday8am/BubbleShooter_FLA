@@ -2,6 +2,7 @@ package com.monday8am.greenfoot
 {
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
+	import flash.events.Event;
 	import flash.utils.getDefinitionByName;
 	import flash.utils.getQualifiedClassName;
 	
@@ -15,12 +16,24 @@ package com.monday8am.greenfoot
 		public function Actor()
 		{
 			super();
+			
+			addEventListener( Event.ADDED_TO_STAGE, onAddedToStage );
 		}
+		
+		
+		private function onAddedToStage( event:Event):void
+		{
+			removeEventListener( Event.ADDED_TO_STAGE, onAddedToStage );
+			
+			_world = World( this.parent )
+			
+			addedToWorld( _world );
+		}		
 		
 		
 		protected function addedToWorld( world : World ):void
 		{
-			_world = world;
+
 		}
 		
 		
