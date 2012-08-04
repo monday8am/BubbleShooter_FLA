@@ -170,7 +170,7 @@ package game
 			match( i,j, matches);
 			
 			// If we got >= 3 matches, clear them!
-			if( matches.size() >= 3)
+			if( matches.length >= 3)
 			{
 				var c : Cell;
 				
@@ -192,16 +192,16 @@ package game
 			
 			// Skip empty space or space outside map.
 			// And don't add one that's already been matched.
-			if( c == null || c.ball == null || matches.contains(c))
+			if( c == null || c.ball == null || matches.indexOf(c) != -1 )
 			{
 				return;
 			}
 			
 			// Match this ball if it has the same type as the ones already matched.
-			if( matches.isEmpty() || c.ball.type == matches.get(0).ball.type )
+			if( matches.length == 0 || c.ball.type == matches[0].ball.type )
 			{
 				// Record it.
-				matches.add(c);
+				matches.push(c);
 				
 				// Left/right neighbors.
 				match(i-1, j, matches);

@@ -27,8 +27,8 @@ package game
 		private var _state 	  : int = STATE_STUCK; // current state.
 		private var exactX 	  : Number; // floating point position for smoothness.
 		private var exactY 	  : Number;
-		private var velocityX : Number; // floating point velocity.		
-		private var velocityY : Number; 
+		private var velocityX : Number = 0; // floating point velocity.		
+		private var velocityY : Number = 0; 
 		
 		
 		public function Ball( color : int )
@@ -77,6 +77,8 @@ package game
 			var a : Number = (angle + 270) * Math.PI / 180.0;
 			velocityX = Math.cos(a) * MOVE_SPEED;
 			velocityY = Math.sin(a) * MOVE_SPEED;
+			
+			trace( "move : " + angle );
 		}
 		
 		
@@ -183,8 +185,17 @@ package game
 			{
 				checkCollisions();
 				
-				exactX += velocityX * deltaTime;
-				exactY += velocityY * deltaTime;
+				trace( "movement", exactX, exactY );
+				
+				exactX += velocityX;
+				exactY += velocityY;
+
+//				exactX += velocityX * deltaTime;
+//				exactY += velocityY * deltaTime;
+				
+				
+				trace( "movement", velocityX, velocityY );
+								
 				setLocation( int( exactX), int( exactY));
 			}
 			

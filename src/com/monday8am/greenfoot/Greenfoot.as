@@ -105,7 +105,6 @@ package com.monday8am.greenfoot
 		
 		public static function isKeyDown( keyName : String ) : Boolean
 		{
-			trace( instance._keyPressed[ keyName ], keyName );
 			return instance._keyPressed[ keyName ];
 		}
 		
@@ -169,11 +168,11 @@ package com.monday8am.greenfoot
 			}
 			else if ( event.keyCode == 38)
 			{
-				_keyPressed[ "top" ] = false;
+				_keyPressed[ "up" ] = false;
 			}
 			else if ( event.keyCode == 39)
 			{
-				_keyPressed[ "top" ]   = false;	
+				_keyPressed[ "right" ]   = false;	
 			}
 				
 		}
@@ -187,11 +186,11 @@ package com.monday8am.greenfoot
 			}
 			else if ( event.keyCode == 38)
 			{
-				_keyPressed[ "top" ] = true;
+				_keyPressed[ "up" ] = true;
 			}
 			else if ( event.keyCode == 39)
 			{
-				_keyPressed[ "top" ]   = true;	
+				_keyPressed[ "right" ]   = true;	
 			}			
 			
 		}		

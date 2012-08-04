@@ -91,6 +91,7 @@ package game
 			
 			if( isUpPressed && !wasUpPressed && !waitingForBall )
 			{
+				trace( "Fire ball" );
 				fireBall();
 			}
 			
@@ -100,14 +101,16 @@ package game
 			// Player presses the LEFT arrow: turn the cannon left.
 			if( Greenfoot.isKeyDown( "left" ) )
 			{
-				angle = Math.max( -MAX_ANGLE, angle - ANGULAR_SPEED * deltaTime);
+				//angle = Math.max( -MAX_ANGLE, angle - ANGULAR_SPEED * deltaTime);
+				angle = Math.max( -MAX_ANGLE, angle - ANGULAR_SPEED );
 				setRotation( int(angle) );
 			}
 			
 			// Player presses the RIGHT arrow: turn the cannon right.
 			if( Greenfoot.isKeyDown("right") )
-			{
-				angle = Math.min(MAX_ANGLE, angle + ANGULAR_SPEED * deltaTime);
+			{ 
+				//angle = Math.min(MAX_ANGLE, angle + ANGULAR_SPEED * deltaTime);
+				angle = Math.min(MAX_ANGLE, angle + ANGULAR_SPEED );
 				setRotation( int(angle) );
 			}
 		}    
