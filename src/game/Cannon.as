@@ -49,6 +49,7 @@ package game
 				
 				// Create it and add it to the world.
 				ball = new Ball(type);
+				trace( "hey! : ", getX(), getY() );
 				getWorld().addObject( ball, getX(), getY() );
 			}
 		}		
@@ -101,16 +102,14 @@ package game
 			// Player presses the LEFT arrow: turn the cannon left.
 			if( Greenfoot.isKeyDown( "left" ) )
 			{
-				//angle = Math.max( -MAX_ANGLE, angle - ANGULAR_SPEED * deltaTime);
-				angle = Math.max( -MAX_ANGLE, angle - ANGULAR_SPEED );
+				angle = Math.max( -MAX_ANGLE, angle - ANGULAR_SPEED * deltaTime);
 				setRotation( int(angle) );
 			}
 			
 			// Player presses the RIGHT arrow: turn the cannon right.
 			if( Greenfoot.isKeyDown("right") )
 			{ 
-				//angle = Math.min(MAX_ANGLE, angle + ANGULAR_SPEED * deltaTime);
-				angle = Math.min(MAX_ANGLE, angle + ANGULAR_SPEED );
+				angle = Math.min(MAX_ANGLE, angle + ANGULAR_SPEED * deltaTime);
 				setRotation( int(angle) );
 			}
 		}    

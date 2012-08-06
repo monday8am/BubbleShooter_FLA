@@ -62,7 +62,7 @@ package game
 		}
 		
 		
-		override protected  function addedToWorld( world : World ) : void
+		override protected function addedToWorld( world : World ) : void
 		{
 			// Store the initial position.
 			exactX = this.x;
@@ -126,7 +126,8 @@ package game
 			var left  : int = 16;
 			var right : int = getWorld().getWidth() - 16;
 			
-			if(exactX < left)
+			
+			if( exactX < left)
 			{
 				exactX -= velocityX*2;
 				velocityX = -velocityX;
@@ -149,6 +150,7 @@ package game
 			}
 			else
 			{
+
 				var others : Array = getIntersectingObjects( "Ball" );
 				// create dictionary
 					
@@ -174,6 +176,7 @@ package game
 				{
 					stick();
 				}
+
 						
 			}
 		}	
@@ -185,17 +188,9 @@ package game
 			{
 				checkCollisions();
 				
-				trace( "movement", exactX, exactY );
+				exactX += velocityX * deltaTime;
+				exactY += velocityY * deltaTime;
 				
-				exactX += velocityX;
-				exactY += velocityY;
-
-//				exactX += velocityX * deltaTime;
-//				exactY += velocityY * deltaTime;
-				
-				
-				trace( "movement", velocityX, velocityY );
-								
 				setLocation( int( exactX), int( exactY));
 			}
 			
