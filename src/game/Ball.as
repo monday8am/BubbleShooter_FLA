@@ -27,8 +27,8 @@ package game
 		private var _state 	  : int = STATE_STUCK; // current state.
 		private var exactX 	  : Number; // floating point position for smoothness.
 		private var exactY 	  : Number;
-		private var velocityX : Number; // floating point velocity.		
-		private var velocityY : Number; 
+		private var velocityX : Number = 0; // floating point velocity.		
+		private var velocityY : Number = 0; 
 		
 		
 		public function Ball( color : int )
@@ -62,7 +62,7 @@ package game
 		}
 		
 		
-		override protected  function addedToWorld( world : World ) : void
+		override protected function addedToWorld( world : World ) : void
 		{
 			// Store the initial position.
 			exactX = this.x;
@@ -77,6 +77,8 @@ package game
 			var a : Number = (angle + 270) * Math.PI / 180.0;
 			velocityX = Math.cos(a) * MOVE_SPEED;
 			velocityY = Math.sin(a) * MOVE_SPEED;
+			
+			trace( "move : " + angle );
 		}
 		
 		
@@ -124,7 +126,8 @@ package game
 			var left  : int = 16;
 			var right : int = getWorld().getWidth() - 16;
 			
-			if(exactX < left)
+			
+			if( exactX < left)
 			{
 				exactX -= velocityX*2;
 				velocityX = -velocityX;
@@ -147,6 +150,7 @@ package game
 			}
 			else
 			{
+
 				var others : Array = getIntersectingObjects( "Ball" );
 				// create dictionary
 					
@@ -172,6 +176,7 @@ package game
 				{
 					stick();
 				}
+
 						
 			}
 		}	
@@ -185,6 +190,7 @@ package game
 				
 				exactX += velocityX * deltaTime;
 				exactY += velocityY * deltaTime;
+				
 				setLocation( int( exactX), int( exactY));
 			}
 			

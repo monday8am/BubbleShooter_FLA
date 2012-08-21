@@ -49,6 +49,7 @@ package game
 				
 				// Create it and add it to the world.
 				ball = new Ball(type);
+				trace( "hey! : ", getX(), getY() );
 				getWorld().addObject( ball, getX(), getY() );
 			}
 		}		
@@ -91,6 +92,7 @@ package game
 			
 			if( isUpPressed && !wasUpPressed && !waitingForBall )
 			{
+				trace( "Fire ball" );
 				fireBall();
 			}
 			
@@ -106,7 +108,7 @@ package game
 			
 			// Player presses the RIGHT arrow: turn the cannon right.
 			if( Greenfoot.isKeyDown("right") )
-			{
+			{ 
 				angle = Math.min(MAX_ANGLE, angle + ANGULAR_SPEED * deltaTime);
 				setRotation( int(angle) );
 			}

@@ -89,7 +89,7 @@ package game
 			// Max speed. We use time-based animation so this is purely for smoothness,
 			// because Greenfoot is plain stupid. I can't find a way to get 60 Hz so this is
 			// what we have to do. Note: Exporting the game seems to cap this to some value < 100. :(
-			Greenfoot.setSpeed(100);
+			Greenfoot.setSpeed( 30);
 			
 			// Load the map.
 			map = new Map( this, maps[3] );

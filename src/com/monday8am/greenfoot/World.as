@@ -40,12 +40,13 @@ package com.monday8am.greenfoot
 			
 			_actorList.push( actor );
 			
-			addChild( actor );
 			
 			actor.x = xPos;
 			
 			actor.y = yPos;
 			
+			addChild( actor );
+
 		}
 		
 		

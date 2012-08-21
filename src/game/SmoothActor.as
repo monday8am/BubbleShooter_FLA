@@ -24,10 +24,10 @@ package game
 		override public function act() : void 
 		{
 			var newTime : uint = new Date().time;
-			
+
 			// We'll handle time in units of 1/100 seconds.
-			deltaTime = (newTime - oldTime) / 10000000.0;
-			
+			deltaTime = (newTime - oldTime) / 10;
+
 			// If this is the first tick, assume some reasonable amount of time elapsed. (1/100 s)
 			if( ticks == 0)
 			{
