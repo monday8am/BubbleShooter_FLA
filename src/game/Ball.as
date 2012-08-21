@@ -13,7 +13,7 @@ package game
 		
 		// List of possible balls. This is static, so they are only loaded once from disk.
 
-		private static const MOVE_SPEED   : Number = 6; // speed when shot from the cannon
+		private static const MOVE_SPEED   : Number = 5; // speed when shot from the cannon
 		private static const FALL_HSPEED  : int = 3; // horizontal speed (random max)
 		private static const FALL_VSPEED  : int     = 10; // initial speed upwards when "falling" (random max)
 		private static const FALL_GRAVITY : Number  = 0.12; // gravity acceleration added to the v. speed every act().
@@ -77,8 +77,6 @@ package game
 			var a : Number = (angle + 270) * Math.PI / 180.0;
 			velocityX = Math.cos(a) * MOVE_SPEED;
 			velocityY = Math.sin(a) * MOVE_SPEED;
-			
-			trace( "move : " + angle );
 		}
 		
 		
@@ -151,12 +149,11 @@ package game
 			else
 			{
 
-				var others : Array = getIntersectingObjects( "Ball" );
+				var others : Array = getIntersectingObjects( "game::Ball" );
 				// create dictionary
-					
-				var collisionDistance : Number = Math.pow(32 * 0.82, 2);
-				var tooClose : Boolean = false;
 				
+				var collisionDistance : Number = Math.pow( 32 * 0.99, 2);
+				var tooClose : Boolean = false;
 				
 				for (var i:int = 0; i < others.length; i++) 
 				{
@@ -164,20 +161,19 @@ package game
 					var dx : Number = b.x - this.x;
 					var dy : Number = b.y - this.y;
 					var d2 : Number = dx*dx + dy*dy;
+					//trace( d2 );
 						
-					if( b.state == Ball.STATE_STUCK &&
-						d2 <= collisionDistance)
+					if( b.state == Ball.STATE_STUCK && d2 <= collisionDistance)
 					{
 							tooClose = true;
 					}
 				}
 					
-				if(tooClose)
+				if( tooClose )
 				{
 					stick();
 				}
-
-						
+		
 			}
 		}	
 				

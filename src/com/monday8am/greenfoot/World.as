@@ -32,14 +32,19 @@ package com.monday8am.greenfoot
 			
 			_bounded = bounded;
 			
+			graphics.lineStyle( 1, 0x000000 );
+			
+			graphics.drawRect( 0, 0, worldWidth, worldHeight );
+			
 		}
 		
 		
 		public function addObject( actor : SmoothActor, xPos : int, yPos : int ):void
 		{
 			
-			_actorList.push( actor );
+			trace( "add actor " + actor +  " " + _actorList.length );
 			
+			_actorList.push( actor );
 			
 			actor.x = xPos;
 			
@@ -64,6 +69,8 @@ package com.monday8am.greenfoot
 		
 		public function removeObject( actor : Actor ) : void
 		{
+			trace( "remove actor ", _actorList.length );
+			
 			_actorList.splice( _actorList.indexOf( actor), 1 );
 			
 			removeChild( actor );

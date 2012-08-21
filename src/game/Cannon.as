@@ -49,7 +49,6 @@ package game
 				
 				// Create it and add it to the world.
 				ball = new Ball(type);
-				trace( "hey! : ", getX(), getY() );
 				getWorld().addObject( ball, getX(), getY() );
 			}
 		}		
@@ -92,7 +91,6 @@ package game
 			
 			if( isUpPressed && !wasUpPressed && !waitingForBall )
 			{
-				trace( "Fire ball" );
 				fireBall();
 			}
 			

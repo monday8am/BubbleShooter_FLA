@@ -89,10 +89,10 @@ package game
 			// Max speed. We use time-based animation so this is purely for smoothness,
 			// because Greenfoot is plain stupid. I can't find a way to get 60 Hz so this is
 			// what we have to do. Note: Exporting the game seems to cap this to some value < 100. :(
-			Greenfoot.setSpeed( 30);
+			Greenfoot.setSpeed( 30 );
 			
 			// Load the map.
-			map = new Map( this, maps[3] );
+			map = new Map( this, maps[0] );
 			
 			// Update the allowed ball types. (i.e. we don't want to spawn a
 			// certain color of balls if the map doesn't contain them!)
@@ -119,12 +119,17 @@ package game
 			// Do something if the player cleared the map.
 			if ( map.hasWon() ) 
 			{
-				if ( numberOfObjects() < 4) 
+				
+				trace( numberOfObjects() );
+				
+				if ( this.numberOfObjects() < 4) 
 				{
 					removeObject( sb );
 					flag = true;
 					
 					level++;
+					
+					trace( "here!");
 					
 					if ( level < levelNum) 
 					{
@@ -133,7 +138,9 @@ package game
 						cannon.prepareBall();
 					} 
 					else
+					{
 						Greenfoot.stop();
+					}
 					
 				} 
 				else if (flag) 

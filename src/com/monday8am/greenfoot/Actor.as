@@ -104,7 +104,6 @@ package com.monday8am.greenfoot
 				}					
 			}
 
-			
 			return result;
 		}
 		

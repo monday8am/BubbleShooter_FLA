@@ -93,13 +93,13 @@ package com.monday8am.greenfoot
 		
 		public static function getRandomNumber( len : int ) : int
 		{
-			return 0;
+			return instance.randomRange( 0, len - 1);
 		}
-	
 		
+
 		public static function playSound( sound : String ) : void
 		{
-			
+			//trace( "play : " + sound );
 		}
 		
 		
@@ -193,7 +193,13 @@ package com.monday8am.greenfoot
 				_keyPressed[ "right" ]   = true;	
 			}			
 			
-		}		
+		}	
+		
+		
+		private function randomRange(minNum:Number, maxNum:Number):Number   
+		{  
+			return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);  
+		} 			
 
 	}
 }

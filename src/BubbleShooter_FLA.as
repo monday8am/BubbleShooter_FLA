@@ -10,6 +10,8 @@ package
 	
 	import game.BubbleWorld;
 	
+	import net.hires.debug.Stats;
+	
 	
 	[SWF(backgroundColor="#ffffff", frameRate="24", width="350", height="600")]
 	public class BubbleShooter_FLA extends Sprite
@@ -19,23 +21,23 @@ package
 		
 		public function BubbleShooter_FLA()
 		{
-			
 			stage.align = StageAlign.TOP_LEFT;
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			
-			// init app..
-
-			if( Capabilities.isDebugger )
-			{
-
-			}				
-			
-			
 			Greenfoot.instance.init( this );
-			
 			bubble = new BubbleWorld();
-
 			addChild( bubble );
+			
+			// add stats
+			if( Capabilities.isDebugger )
+			{			
+				var stats : Stats = new Stats();
+				addChild( stats );
+				stats.scaleX =
+				stats.scaleY = 1;
+				stats.y = 400;
+				
+			}			
 			
 		}
 			

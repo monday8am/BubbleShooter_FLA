@@ -262,6 +262,7 @@ package game
 		private function updateBalls() : void
 		{
 			var i : int = 0;
+			
 			// Mark all balls as unattached.
 			var c : Cell;
 			
@@ -305,6 +306,7 @@ package game
 					}
 				}
 			}
+
 		}
 		
 		private function markAttached( i : int, j : int ) : void
@@ -368,7 +370,7 @@ package game
 						{
 							minDistance = distance;
 							
-							if(pos == null)
+							if( pos == null)
 							{
 								pos = new Position();
 							}
