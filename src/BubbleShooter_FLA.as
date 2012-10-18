@@ -13,7 +13,7 @@ package
 	import net.hires.debug.Stats;
 	
 	
-	[SWF(backgroundColor="#ffffff", frameRate="24", width="350", height="600")]
+	[SWF(backgroundColor="#ffffff", frameRate="24", width="350", height="400")]
 	public class BubbleShooter_FLA extends Sprite
 	{
 		
@@ -35,8 +35,7 @@ package
 				addChild( stats );
 				stats.scaleX =
 				stats.scaleY = 1;
-				stats.y = 400;
-				
+				stats.x = 260;
 			}			
 			
 		}
